@@ -22,20 +22,26 @@ public class AuthUiTest extends BaseUiTest {
         Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
         LoginPage loginPage = homePage.clickSignupLogin();
+        closeVignetteAd();
         Assert.assertTrue(loginPage.isNewUserSignupVisible(), "'New User Signup!' should be visible.");
 
         SignupPage signupPage = loginPage.signupWithNameAndEmail(user.name(), user.email());
+        closeVignetteAd();
         Assert.assertTrue(signupPage.isEnterAccountInformationVisible(), "'Enter Account Information' should be visible.");
 
         AccountCreatedPage accountCreatedPage = signupPage.fillDetailsAndCreateAccount(user);
+        closeVignetteAd();
         Assert.assertTrue(accountCreatedPage.isAccountCreatedVisible(), "'ACCOUNT CREATED!' should be visible.");
 
         homePage = accountCreatedPage.clickContinue();
+        closeVignetteAd();
         Assert.assertTrue(homePage.isLoggedInAsVisible(user.name()), "'Logged in as username' should be visible.");
 
         AccountDeletedPage accountDeletedPage = homePage.clickDeleteAccount();
+        closeVignetteAd();
         Assert.assertTrue(accountDeletedPage.isAccountDeletedVisible(), "'ACCOUNT DELETED!' should be visible.");
         accountDeletedPage.clickContinue();
+        closeVignetteAd();
     }
 
     @Test(description = "Test Case 2: Login User with correct email and password")
@@ -50,12 +56,15 @@ public class AuthUiTest extends BaseUiTest {
             Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
             LoginPage loginPage = homePage.clickSignupLogin();
+            closeVignetteAd();
             Assert.assertTrue(loginPage.isLoginToYourAccountVisible(), "'Login to your account' should be visible.");
 
             homePage = loginPage.login(user.email(), user.password());
+            closeVignetteAd();
             Assert.assertTrue(homePage.isLoggedInAsVisible(user.name()), "'Logged in as username' should be visible.");
 
             AccountDeletedPage accountDeletedPage = homePage.clickDeleteAccount();
+            closeVignetteAd();
             Assert.assertTrue(accountDeletedPage.isAccountDeletedVisible(), "'ACCOUNT DELETED!' should be visible.");
             deletedViaUi = true;
         } finally {
@@ -90,12 +99,15 @@ public class AuthUiTest extends BaseUiTest {
             Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
             LoginPage loginPage = homePage.clickSignupLogin();
+            closeVignetteAd();
             Assert.assertTrue(loginPage.isLoginToYourAccountVisible(), "'Login to your account' should be visible.");
 
             homePage = loginPage.login(user.email(), user.password());
+            closeVignetteAd();
             Assert.assertTrue(homePage.isLoggedInAsVisible(user.name()), "'Logged in as username' should be visible.");
 
             loginPage = homePage.clickLogout();
+            closeVignetteAd();
             Assert.assertTrue(loginPage.isLoginToYourAccountVisible(),
                 "User should be navigated to login page after logout.");
         } finally {

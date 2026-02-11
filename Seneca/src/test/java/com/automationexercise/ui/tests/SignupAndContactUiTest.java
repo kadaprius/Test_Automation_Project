@@ -25,9 +25,11 @@ public class SignupAndContactUiTest extends BaseUiTest {
             Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
             LoginPage loginPage = homePage.clickSignupLogin();
+            closeVignetteAd();
             Assert.assertTrue(loginPage.isNewUserSignupVisible(), "'New User Signup!' should be visible.");
 
             loginPage.signupWithNameAndEmail("Existing User Attempt", user.email());
+            closeVignetteAd();
             Assert.assertTrue(loginPage.isExistingEmailErrorVisible(),
                 "Error 'Email Address already exist!' should be visible.");
         } finally {
@@ -44,6 +46,7 @@ public class SignupAndContactUiTest extends BaseUiTest {
         Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
         ContactUsPage contactUsPage = homePage.clickContactUs();
+        closeVignetteAd();
         Assert.assertTrue(contactUsPage.isGetInTouchVisible(), "'GET IN TOUCH' should be visible.");
 
         contactUsPage
@@ -56,10 +59,12 @@ public class SignupAndContactUiTest extends BaseUiTest {
             .uploadFile(resolveUploadFilePath())
             .submitAndAcceptAlert();
 
+        closeVignetteAd();
         Assert.assertTrue(contactUsPage.isSuccessMessageVisible(),
             "Success message should be visible after form submission.");
 
         homePage = contactUsPage.clickHomeButton();
+        closeVignetteAd();
         Assert.assertTrue(homePage.isHomePageVisible(), "User should land on home page after clicking Home.");
     }
 

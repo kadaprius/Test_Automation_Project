@@ -18,7 +18,9 @@ public class SearchAndSubscriptionUiTest extends BaseUiTest {
         HomePage homePage = new HomePage(driver).open(baseUrl);
         Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
+        homePage.clickProducts();
         ProductsPage productsPage = homePage.clickProducts();
+        closeVignetteAd();
         Assert.assertTrue(productsPage.isOnAllProductsPage(),
             "User should be navigated to ALL PRODUCTS page successfully.");
 

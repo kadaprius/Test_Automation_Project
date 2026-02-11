@@ -17,6 +17,7 @@ public class TestCasesAndProductsUiTest extends BaseUiTest {
         Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
         TestCasesPage testCasesPage = homePage.clickTestCases();
+        closeVignetteAd();
         Assert.assertTrue(testCasesPage.isOnTestCasesPage(),
             "User should be navigated to Test Cases page successfully.");
     }
@@ -28,11 +29,13 @@ public class TestCasesAndProductsUiTest extends BaseUiTest {
         Assert.assertTrue(homePage.isHomePageVisible(), "Home page should be visible.");
 
         ProductsPage productsPage = homePage.clickProducts();
+        closeVignetteAd();
         Assert.assertTrue(productsPage.isOnAllProductsPage(),
             "User should be navigated to ALL PRODUCTS page.");
         Assert.assertTrue(productsPage.isProductsListVisible(), "Products list should be visible.");
 
         ProductDetailsPage productDetailsPage = productsPage.clickFirstViewProduct();
+        closeVignetteAd();
         Assert.assertTrue(productDetailsPage.isOnProductDetailsPage(),
             "User should be landed on product detail page.");
         Assert.assertTrue(productDetailsPage.areCoreProductDetailsVisible(),
