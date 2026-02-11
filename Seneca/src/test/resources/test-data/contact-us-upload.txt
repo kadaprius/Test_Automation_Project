@@ -1,0 +1,2 @@
+Automation Exercise contact form upload file.
+This file is used by UI Test Case 6.
