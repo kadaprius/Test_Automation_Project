@@ -19,6 +19,7 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_BUTTON = By.cssSelector("button[data-qa='login-button']");
 
     private static final By INCORRECT_LOGIN_ERROR = By.xpath("//p[text()='Your email or password is incorrect!']");
+    private static final By EXISTING_EMAIL_ERROR = By.xpath("//p[text()='Email Address already exist!']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -53,5 +54,10 @@ public class LoginPage extends BasePage {
     @Step("Verify incorrect login error message")
     public boolean isIncorrectLoginErrorVisible() {
         return isVisible(INCORRECT_LOGIN_ERROR);
+    }
+
+    @Step("Verify existing email error message")
+    public boolean isExistingEmailErrorVisible() {
+        return isVisible(EXISTING_EMAIL_ERROR);
     }
 }

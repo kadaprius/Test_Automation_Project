@@ -9,6 +9,7 @@ public class HomePage extends BasePage {
 
     private static final By HOME_BANNER = By.cssSelector("div.item.active");
     private static final By SIGNUP_LOGIN_LINK = By.cssSelector("a[href='/login']");
+    private static final By CONTACT_US_LINK = By.cssSelector("a[href='/contact_us']");
     private static final By LOGGED_IN_AS = By.xpath("//a[contains(.,'Logged in as')]");
     private static final By DELETE_ACCOUNT_LINK = By.cssSelector("a[href='/delete_account']");
     private static final By LOGOUT_LINK = By.cssSelector("a[href='/logout']");
@@ -33,6 +34,12 @@ public class HomePage extends BasePage {
     public LoginPage clickSignupLogin() {
         click(SIGNUP_LOGIN_LINK);
         return new LoginPage(driver);
+    }
+
+    @Step("Click Contact Us")
+    public ContactUsPage clickContactUs() {
+        click(CONTACT_US_LINK);
+        return new ContactUsPage(driver);
     }
 
     @Step("Verify 'Logged in as username' is visible")
