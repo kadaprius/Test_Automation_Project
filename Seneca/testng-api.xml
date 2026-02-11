@@ -4,11 +4,12 @@
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
 
-    <test name="API Test Cases 1-8" preserve-order="true">
+    <test name="API Test Cases 1-10" preserve-order="true">
         <classes>
             <class name="com.automationexercise.api.tests.ProductsAndBrandsApiTest"/>
             <class name="com.automationexercise.api.tests.SearchProductApiTest"/>
             <class name="com.automationexercise.api.tests.VerifyLoginApiTest"/>
+            <class name="com.automationexercise.api.tests.VerifyLoginNegativeApiTest"/>
         </classes>
     </test>
 </suite>

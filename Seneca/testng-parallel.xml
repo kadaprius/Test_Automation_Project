@@ -4,19 +4,21 @@
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
 
-    <test name="UI Test Cases 1-8" preserve-order="true">
+    <test name="UI Test Cases 1-10" preserve-order="true">
         <classes>
             <class name="com.automationexercise.ui.tests.AuthUiTest"/>
             <class name="com.automationexercise.ui.tests.SignupAndContactUiTest"/>
             <class name="com.automationexercise.ui.tests.TestCasesAndProductsUiTest"/>
+            <class name="com.automationexercise.ui.tests.SearchAndSubscriptionUiTest"/>
         </classes>
     </test>
 
-    <test name="API Test Cases 1-8" preserve-order="true">
+    <test name="API Test Cases 1-10" preserve-order="true">
         <classes>
             <class name="com.automationexercise.api.tests.ProductsAndBrandsApiTest"/>
             <class name="com.automationexercise.api.tests.SearchProductApiTest"/>
             <class name="com.automationexercise.api.tests.VerifyLoginApiTest"/>
+            <class name="com.automationexercise.api.tests.VerifyLoginNegativeApiTest"/>
         </classes>
     </test>
 </suite>

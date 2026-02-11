@@ -2,8 +2,10 @@ package com.automationexercise.ui.pages;
 
 import com.automationexercise.core.ui.BasePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage {
 
@@ -15,6 +17,11 @@ public class HomePage extends BasePage {
     private static final By LOGGED_IN_AS = By.xpath("//a[contains(.,'Logged in as')]");
     private static final By DELETE_ACCOUNT_LINK = By.cssSelector("a[href='/delete_account']");
     private static final By LOGOUT_LINK = By.cssSelector("a[href='/logout']");
+    private static final By FOOTER = By.id("footer");
+    private static final By SUBSCRIPTION_HEADER = By.xpath("//footer//h2[text()='Subscription']");
+    private static final By SUBSCRIPTION_EMAIL_INPUT = By.id("susbscribe_email");
+    private static final By SUBSCRIPTION_ARROW_BUTTON = By.id("subscribe");
+    private static final By SUBSCRIPTION_SUCCESS_MESSAGE = By.xpath("//div[@id='success-subscribe']//div[contains(.,'You have been successfully subscribed!')]");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -54,6 +61,30 @@ public class HomePage extends BasePage {
     public ProductsPage clickProducts() {
         click(PRODUCTS_LINK);
         return new ProductsPage(driver);
+    }
+
+    @Step("Scroll down to footer")
+    public HomePage scrollToFooter() {
+        WebElement footer = wait.visible(FOOTER);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
+        return this;
+    }
+
+    @Step("Verify text 'SUBSCRIPTION'")
+    public boolean isSubscriptionVisible() {
+        return isVisible(SUBSCRIPTION_HEADER);
+    }
+
+    @Step("Subscribe with email: {email}")
+    public HomePage subscribeWithEmail(String email) {
+        type(SUBSCRIPTION_EMAIL_INPUT, email);
+        click(SUBSCRIPTION_ARROW_BUTTON);
+        return this;
+    }
+
+    @Step("Verify subscription success message")
+    public boolean isSubscriptionSuccessMessageVisible() {
+        return isVisible(SUBSCRIPTION_SUCCESS_MESSAGE);
     }
 
     @Step("Verify 'Logged in as username' is visible")

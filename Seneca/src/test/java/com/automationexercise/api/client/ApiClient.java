@@ -15,72 +15,84 @@ public class ApiClient {
 
     public ApiClient() {
         this.baseSpec = new RequestSpecBuilder()
-            .setBaseUri(ConfigManager.get("api.base.url"))
-            .addFilter(new AllureRestAssured())
-            .build();
+                .setBaseUri(ConfigManager.get("api.base.url"))
+                .addFilter(new AllureRestAssured())
+                .build();
     }
 
     @Step("API GET {endpoint}")
     public Response get(String endpoint) {
         return io.restassured.RestAssured
-            .given()
-            .spec(baseSpec)
-            .when()
-            .get(endpoint)
-            .then()
-            .extract()
-            .response();
+                .given()
+                .spec(baseSpec)
+                .when()
+                .get(endpoint)
+                .then()
+                .extract()
+                .response();
     }
 
     @Step("API POST {endpoint} with form params")
     public Response postForm(String endpoint, Map<String, String> formParams) {
         return io.restassured.RestAssured
-            .given()
-            .spec(baseSpec)
-            .contentType(ContentType.URLENC)
-            .formParams(formParams)
-            .when()
-            .post(endpoint)
-            .then()
-            .extract()
-            .response();
+                .given()
+                .spec(baseSpec)
+                .contentType(ContentType.URLENC)
+                .formParams(formParams)
+                .when()
+                .post(endpoint)
+                .then()
+                .extract()
+                .response();
     }
 
     @Step("API POST {endpoint} without payload")
     public Response post(String endpoint) {
         return io.restassured.RestAssured
-            .given()
-            .spec(baseSpec)
-            .when()
-            .post(endpoint)
-            .then()
-            .extract()
-            .response();
+                .given()
+                .spec(baseSpec)
+                .when()
+                .post(endpoint)
+                .then()
+                .extract()
+                .response();
     }
 
     @Step("API PUT {endpoint}")
     public Response put(String endpoint) {
         return io.restassured.RestAssured
-            .given()
-            .spec(baseSpec)
-            .when()
-            .put(endpoint)
-            .then()
-            .extract()
-            .response();
+                .given()
+                .spec(baseSpec)
+                .when()
+                .put(endpoint)
+                .then()
+                .extract()
+                .response();
+    }
+
+    @Step("API DELETE {endpoint}")
+    public Response delete(String endpoint) {
+        return io.restassured.RestAssured
+                .given()
+                .spec(baseSpec)
+                .when()
+                .delete(endpoint)
+                .then()
+                .extract()
+                .response();
     }
 
     @Step("API DELETE {endpoint} with form params")
     public Response deleteForm(String endpoint, Map<String, String> formParams) {
         return io.restassured.RestAssured
-            .given()
-            .spec(baseSpec)
-            .contentType(ContentType.URLENC)
-            .formParams(formParams)
-            .when()
-            .delete(endpoint)
-            .then()
-            .extract()
-            .response();
+                .given()
+                .spec(baseSpec)
+                .contentType(ContentType.URLENC)
+                .formParams(formParams)
+                .when()
+                .delete(endpoint)
+                .then()
+                .extract()
+                .response();
     }
 }
